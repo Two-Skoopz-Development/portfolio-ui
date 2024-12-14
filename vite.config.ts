@@ -12,6 +12,11 @@ export default defineConfig({
       plugins: [tailwindcss],
     },
   },
+  build: {
+    target: 'ES2022',
+    outDir: 'build',
+    assetsDir: 'assets',
+  },
   resolve: {
     alias: {
       '@': `${path.resolve(__dirname, 'src')}`,

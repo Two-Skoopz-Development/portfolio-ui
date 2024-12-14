@@ -30,33 +30,8 @@ jobs:
           npm install @clerk/clerk-sdk-node
           npm run build # Adjust based on your project's build script
 
-      - uses: whyakari/github-repo-action@v3.1
-        with:
-          owner: nlarson2
-          repository: portfolio-ui
-          access-token: ${{ secrets.PAT_LARSON }}
-          branch: github-io
-          
-      - name: Remove Old Code
-        run: find ./portfolio-ui -mindepth 1 -type d -not -path '*/.git*' -exec rm -rf {} +
-        shell: bash
 
-      - name: Move build over
-        run: cp -r build/* portfolio-ui
-        shell: bash
-
-      - name: Commit and push changes
+      - name: Deploy
         run: |
-          cd portfolio-ui
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-          git add .
-          git config --list
-          pwd
-          git commit -m "New build update"
-          git push origin github-io # Replace branch-name with the desired branh
-          cd ../
-        env: 
-           GITHUB_TOKEN: ${{ secrets.PAT_LARSON }}
-        shell: bash
+          npm run deploy
+        
