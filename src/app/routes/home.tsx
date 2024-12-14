@@ -9,7 +9,7 @@ export const Home: React.FC = () => {
       <img src={snowmanpic} className="w-96 m-auto float-start p-10" />
       <p className="my-8 p-10">
         &emsp;Hi, my name is Nickolas Larson, and I'm a Software Engineer. I
-        created this site/blog to hone my skills and document my projects. My
+        created this site/blog to work on my skills and document my projects. My
         ultimate goal is to learn and receive feedback from friends, peers, and
         anyone who comes across this site.
         {/*

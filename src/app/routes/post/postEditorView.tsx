@@ -81,38 +81,50 @@ export const PostEditorView: React.FC = () => {
   }, [post]);
 
   const selected =
-    'bg-space-cadet-blue text-platinum px-10 py-5 w-28 border-space-cadet-blue border-2';
+    'inline-block p-4 text-platinum rounded-t-lg active dark:text-blue-500 bg-space-cadet-blue active';
   const notSelected =
-    'bg-slate-100 text-black px-10 py-5 w-28 border-space-cadet-blue border-2';
+    'inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300';
+
+  // const selected =
+  //   'bg-space-cadet-blue text-platinum px-10 py-5 w-28 border-space-cadet-blue border-2';
+  // const notSelected =
+  //   'bg-slate-100 text-black px-10 py-5 w-28 border-space-cadet-blue border-2';
 
   return (
     <ContentLayout>
       <div className="m-auto">
         <input
-          className="bg-space-cadet-blue text-platinum px-10 py-5 rounded-lg"
+          className="bg-space-cadet-blue text-platinum px-4 py-2 rounded-lg mb-3"
           type="button"
           value={'Save Post'}
           onClick={() => {
             submitPostData();
           }}
         />
-
-        <input
-          className={(preview ? selected : notSelected) + ' ml-3 rounded-l-lg'}
-          type="button"
-          value={'Preview'}
-          onClick={() => {
-            setPreview(true);
-          }}
-        />
-        <input
-          className={(!preview ? selected : notSelected) + ' rounded-r-lg'}
-          type="button"
-          value={'Edit'}
-          onClick={() => {
-            setPreview(false);
-          }}
-        />
+        <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400 mt">
+          <li>
+            <a
+              aria-current="page"
+              className={preview ? selected : notSelected}
+              onClick={() => {
+                setPreview(true);
+              }}
+            >
+              Preview
+            </a>
+          </li>
+          <li>
+            <a
+              aria-current="page"
+              className={!preview ? selected : notSelected}
+              onClick={() => {
+                setPreview(false);
+              }}
+            >
+              Edit
+            </a>
+          </li>
+        </ul>
         {preview ? (
           <PostView post={post} />
         ) : (

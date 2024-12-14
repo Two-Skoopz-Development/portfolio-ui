@@ -21,7 +21,14 @@ module.exports = {
         'jet-grey': '#333333',
         'honolulu-blue': '#0077B6',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

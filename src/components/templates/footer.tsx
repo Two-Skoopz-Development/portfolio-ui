@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsGithub, BsLinkedin } from 'react-icons/bs';
+import { BsGithub, BsLinkedin, BsEnvelopeFill } from 'react-icons/bs';
 
 const Footer: React.FC = () => {
   return (
@@ -16,6 +16,12 @@ const Footer: React.FC = () => {
           className="text-gray-300 hover:text-white mx-3"
         >
           <BsLinkedin style={{ fontSize: '30px' }} />
+        </a>
+        <a
+          href="mailto:nickolas.a.larson@gmail.com"
+          className="text-gray-300 hover:text-white mx-3"
+        >
+          <BsEnvelopeFill style={{ fontSize: '30px' }} />
         </a>
       </div>
       <div className="flex justify-center spax-x-4">
