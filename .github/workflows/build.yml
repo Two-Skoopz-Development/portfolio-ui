@@ -20,12 +20,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '22'
 
       # Step 3: Install dependencies and build
       - name: Install dependencies and build
         run: |
           npm install
+          npm install @clerk/clerk-react
+          npm install --save-dev @types/clerk__clerk-react
           npm run build # Adjust based on your project's build script
 
       # Step 4: Checkout the target branch
