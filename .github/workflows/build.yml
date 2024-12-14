@@ -31,10 +31,9 @@ jobs:
           npm install gh-pages --save-dev
           npm run build # Adjust based on your project's build script
 
+      - name: Deploy 
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The folder the action should deploy.
 
-      - name: Deploy
-        run: |
-          git config --global user.name "nlarson2"
-          git config --global user.email "28692007+nlarson2@users.noreply.github.com"
-          npm run deploy
         
