@@ -38,11 +38,11 @@ jobs:
           branch: github-io
           
       - name: Remove Old Code
-        run: find ${{ inputs.out_repo }} -mindepth 1 -type d -not -path '*/.git*' -exec rm -rf {} +
+        run: find ./portfolio-ui -mindepth 1 -type d -not -path '*/.git*' -exec rm -rf {} +
         shell: bash
 
       - name: Move build over
-        run: cp -r build/* portfolio-ui
+        run: cp -r build portfolio-ui
         shell: bash
 
       - name: Commit and push changes
