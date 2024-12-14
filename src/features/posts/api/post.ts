@@ -44,7 +44,7 @@ export default class PostAPI {
         'Content-Type': 'application/json',
       },
     });
-    const data: Post = await response.json();
+    const data: any = await response.json();
     return data.post;
   };
 

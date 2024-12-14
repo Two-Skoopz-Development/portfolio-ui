@@ -2,7 +2,6 @@ import React from 'react';
 
 import { ContentLayout } from '@components/layouts';
 import { Experience, Education, Projects } from '@features/resume/components';
-import Markdown from '@components/markdown';
 
 const selectedFormat =
   'inline-block p-4 text-platinum rounded-t-lg active dark:text-blue-500 bg-space-cadet-blue active';

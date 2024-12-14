@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '@clerk/clerk-react';
 
-import { ContentLayout } from '../../../components/layouts';
-import PostAPI from '../../../features/posts/api/post';
-import TagAPI from '../../../features/posts/api/tag';
-import { PostView, PostEditor } from '../../../features/posts/components';
-import { Post, SelectTag, Tag } from '../../../features/posts/types';
+import { ContentLayout } from '@components/layouts';
+import PostAPI from '@features/posts/api/post';
+import TagAPI from '@features/posts/api/tag';
+import { PostView, PostEditor } from '@features/posts/components';
+import { Post, SelectTag, Tag } from '@features/posts/types';
 
 export const PostEditorView: React.FC = () => {
   const { getToken } = useAuth();

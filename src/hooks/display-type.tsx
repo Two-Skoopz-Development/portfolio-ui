@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 
 const useDisplayType = () => {
   const [isMobile, setIsMobile] = useState<boolean>(false);

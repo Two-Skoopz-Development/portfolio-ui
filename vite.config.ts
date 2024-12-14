@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from 'tailwindcss';
 import * as path from 'node:path';
+// import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,6 +11,11 @@ export default defineConfig({
     postcss: {
       plugins: [tailwindcss],
     },
+  },
+  build: {
+    target: 'ES2022',
+    outDir: 'build',
+    assetsDir: 'static/assets',
   },
   resolve: {
     alias: {

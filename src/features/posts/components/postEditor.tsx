@@ -56,7 +56,7 @@ export const PostEditor: React.FC<PostEditorProps> = ({
                   type="checkbox"
                   checked={value.selected}
                   onChange={() => {
-                    updateTags(key as number);
+                    updateTags(Number(key));
                   }}
                 />
               </p>
