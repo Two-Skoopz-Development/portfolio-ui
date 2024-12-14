@@ -42,7 +42,7 @@ jobs:
         shell: bash
 
       - name: Move build over
-        run: cp -r build portfolio-ui
+        run: cp -r build/* portfolio-ui
         shell: bash
 
       - name: Commit and push changes

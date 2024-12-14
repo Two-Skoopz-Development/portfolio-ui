@@ -5,7 +5,7 @@ import Markdown from '@components/markdown';
 const educationAndSkills = `
 ### Skills
 * __Programming Languages__: Python, JavaScript/TypeScript, Powershell, C#, HTML/CSS, PHP, SQL, Protobuf\n
-* __Tools/Frameworks__: Django, React, GitHub, Redis, VMWare, gRPC, Docker, Ansible, ADO
+* __Tools/Frameworks__: Django, React, GitHub, GitHub Actions, Redis, VMWare, gRPC, Docker, Ansible, ADO
 
 ### Education
 * __Georgia Institute of Technology__ - Expected Graduation May 2026
