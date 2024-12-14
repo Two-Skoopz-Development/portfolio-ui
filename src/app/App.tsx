@@ -18,9 +18,11 @@ import TagRoutes from './routes/tags';
 
 export const App: React.FC = () => {
   const { user } = useUser();
+  const baseUrl = import.meta.env.BASE_URL;
+  console.log(baseUrl);
   return (
     <div className="flex flex-col min-h-screen">
-      <Router>
+      <Router basename={baseUrl}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resume" element={<Resume />} />
@@ -37,7 +39,7 @@ export const App: React.FC = () => {
             }
           />
           <Route
-            path="/admin"
+            path="/admin/*"
             element={
               <>
                 <SignedOut>
