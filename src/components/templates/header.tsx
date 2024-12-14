@@ -26,7 +26,11 @@ const WebNav: React.FC = () => {
         );
       })}
       <SignedIn>
-        <SignOutButton className="text-platinum hover:text-gray-200" />
+        <SignOutButton>
+          <button className="text-platinum hover:text-gray-200">
+            Sign Out
+          </button>
+        </SignOutButton>
       </SignedIn>
     </>
   );
@@ -63,7 +67,12 @@ const MobileNav: React.FC = () => {
               );
             })}
             <SignedIn>
-              <SignOutButton className="block text-platinum hover:text-gray-600 my-4 ml-2" />
+              <SignOutButton>
+                {' '}
+                <button className="block text-platinum hover:text-gray-600 my-4 ml-2">
+                  Sign Out
+                </button>{' '}
+              </SignOutButton>
             </SignedIn>
           </div>
         </div>
