@@ -15,7 +15,7 @@ export default defineConfig({
   build: {
     target: 'ES2022',
     outDir: 'build',
-    assetsDir: 'static/assets',
+    assetsDir: 'assets',
   },
   resolve: {
     alias: {
