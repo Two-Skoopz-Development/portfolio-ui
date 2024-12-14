@@ -4,7 +4,7 @@ import { ContentLayout } from '../../components/layouts';
 export const Contact: React.FC = () => {
   return (
     <ContentLayout title="Contact">
-      <p>This is my contact page</p>
+      <p>Coming Soon</p>
     </ContentLayout>
   );
 };
