@@ -37,18 +37,20 @@ export const PostListViewer: React.FC = () => {
             />
           )}
         </SignedIn>
-        <div className="">
-          {posts?.length > 0 ? (
-            posts.map((post: Post, index: number) => {
-              return (
-                <React.Fragment key={index}>
-                  <PostLink post={post} />
-                </React.Fragment>
-              );
-            })
-          ) : (
-            <p>No Posts Available</p>
-          )}
+        <div className="container mx-auto p-4">
+          <div className="grid gap-4 sm:gird-cols-2 lg:grid-cols-3">
+            {posts?.length > 0 ? (
+              posts.map((post: Post, index: number) => {
+                return (
+                  <React.Fragment key={index}>
+                    <PostLink post={post} />
+                  </React.Fragment>
+                );
+              })
+            ) : (
+              <p>No Posts Available</p>
+            )}
+          </div>
         </div>
       </>
     </ContentLayout>

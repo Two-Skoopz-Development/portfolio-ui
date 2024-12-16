@@ -21,13 +21,18 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
+      
+      - name: Create .env file
+        run: |
+          echo "VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY}}" >> .env
 
       # Step 3: Install dependencies and build
       - name: Install dependencies and build
         run: |
           npm install
-          npm install @clerk/clerk-react
-          npm install @clerk/clerk-sdk-node
           npm run build # Adjust based on your project's build script
 
-        
+
+
+      
+      

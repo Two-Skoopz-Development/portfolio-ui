@@ -1,6 +1,6 @@
 import { Tag } from '../types';
 
-const url = 'http://localhost:44444/tags';
+const url = '/api/tags';
 
 export default class TagAPI {
   public static Create = async (

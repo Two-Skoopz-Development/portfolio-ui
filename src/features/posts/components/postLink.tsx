@@ -12,14 +12,23 @@ export const PostLink: React.FC<PostLinkProps> = ({ post }: PostLinkProps) => {
   }
   return (
     <>
-      <Link
-        to={`/post/${post.uuid}`}
-        className="text-platinum hover:text-gray-200"
-      >
-        <div className="bg-space-cadet-blue rounded-lg w-4/5 mx-auto my-2 p-1">
-          <p className="text-center my-5 text-white">
-            {post.title} - {post.created_at?.split('T')[0]}
-          </p>
+      <Link to={`/post/${post.uuid}`}>
+        <div className="box bg-white shadow-md rounded-lg overflow-hidden">
+          <div className="thumbnail">
+            <img
+              src="https://via.placeholder.com/150"
+              className="w-full h48 object-cover"
+            />
+          </div>
+          <div className="p-4">
+            <h2 className="title text-xl font-semibold mb-2">{post.title}</h2>
+            <p className="description text-gray-600 mb-4">
+              This is a short description of the box content.
+            </p>
+            <span className="date text-sm text-gray-500">
+              {post.created_at?.split('T')[0]}
+            </span>
+          </div>
         </div>
       </Link>
     </>

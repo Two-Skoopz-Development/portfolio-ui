@@ -1,6 +1,6 @@
 import { Post } from '../types';
 
-const url = 'http://localhost:44444/post';
+const url = '/api/post';
 
 export default class PostAPI {
   public static Create = async (
