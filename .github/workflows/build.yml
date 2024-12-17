@@ -24,15 +24,43 @@ jobs:
       
       - name: Create .env file
         run: |
-          echo "VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY}}" >> .env
+          echo "VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY}}" >> .
 
-      # Step 3: Install dependencies and build
-      - name: Install dependencies and build
+      # Step 3: Build docker image
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+
+
+      # Step 4 Log in / build / push to registry
+      - name: Log in to Docker registry
+        uses: docker/login-action@v2
+        with:
+          registy:  ${{ secrets.DOCKER_REGISTRY }}  # Docker registry
+          username: ${{ secrets.DOCKER_USERNAME }}  # Docker username
+          password: ${{ secrets.DOCKER_PASSWORD }}  # Docker password or token
+
+      # Build and tag Docker image with remote registry
+      - name: Build and tag Docker image
         run: |
-          npm install
-          npm run build # Adjust based on your project's build script
+          docker build -t ${{ secrets.DOCKER_REGISTRY}} /portfolio-ui:${{ github.sha }} .
+
+      # Push the Docker image to the remote private registry
+      - name: Push Docker image to registry
+        run: |
+          docker push ${{ secrets.DOCKER_REGISTRY}}/portfolio-ui:${{ github.sha }}
 
 
-
-      
-      
+        
+      - name: SSH into server and run Docker container
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SERVER_IP }}  # Server IP or domain
+          username: ${{ secrets.SERVER_USERNAME }}  # SSH username
+          key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}  # SSH private key
+          script: |
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{ env.DOCKER_REGISTRY_URL }} --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+            docker pull ${{ secrets.DOCKER_REGISTRY }}/portfolio-ui:${{ github.sha }}
+            docker stop portfolio-ui || true  # Stop the existing container (if any)
+            docker rm portfolio-ui || true    # Remove the stopped container (if any)
+            docker run -d --name portfolio-ui ${{ env.DOCKER_REGISTRY }}/portfolio-ui:${{ github.sha }}  # Run the new container 
