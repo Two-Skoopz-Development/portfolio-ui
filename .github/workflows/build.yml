@@ -45,7 +45,7 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_REGISTRY}}/portfolio-ui:${{ github.sha }}
 
-
+      
         
       - name: SSH into server and run Docker container
         uses: appleboy/ssh-action@v0.1.8
@@ -54,6 +54,8 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}  # SSH username
           key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}  # SSH private key
           script: |
+           # Ensure Docker is installed and available on the server
+            docker --version || sudo apt-get install -y docker.io
             echo ${{ secrets.DOCKER_PASSWORD }} | docker login ${{ env.DOCKER_REGISTRY_URL }} --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
             sudo docker pull ${{ secrets.DOCKER_REGISTRY }}/portfolio-ui:${{ github.sha }}
             sudo docker stop portfolio-ui || true  # Stop the existing container (if any)
