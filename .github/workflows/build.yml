@@ -40,7 +40,7 @@ jobs:
       # Build and tag Docker image with remote registry
       - name: Build and tag Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_REGISTRY}} /portfolio-ui:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKER_REGISTRY}}/portfolio-ui:${{ github.sha }} .
 
       # Push the Docker image to the remote private registry
       - name: Push Docker image to registry
