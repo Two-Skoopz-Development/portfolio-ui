@@ -49,22 +49,43 @@ jobs:
       #   run: |
       #     docker push  ${{secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }}
 
+
+      - name: SSH Command
         # You may pin to the exact commit or the version.
-  # uses: ErenKrt/ssh-push@cea145c9f5cc7a0a12e8151ac946e6d2fe565fd7
-      - name: SSH
-        uses: ErenKrt/ssh-push@1.3
+        # uses: D3rHase/ssh-command-action@a2d33a241057592ef36e4e552ff44485201acf10
+        uses: D3rHase/ssh-command-action@latest
         with:
-          host:  ${{ secrets.SERVER_IP }}
-          # Username of SSH user
-          username: ${{ secrets.SERVER_USERNAME }}
-          # Password of user
-          password: ${{ secrets.SERVER_PASSWORD }}
-          # Execute commands after transfer source file
-          script: |
-           # Ensure Docker is installed and available on the server
+          # hostname / IP of the server
+          host: ${{ secrets.SERVER_IP }}
+          # ssh port of the server
+          # user of the server
+          user: ${{ secrets.SERVER_USERNAME }}
+          # private ssh key registered on the server
+          private_key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+          # Fingerprint of the server, preventing man-in-the-middle attacks
+          command: | # optional, default is echo 'Hello world'
             docker --version || sudo apt-get install -y docker.io
             echo ${{ secrets.DOCKER_PASSWORD }} | docker login https://${{ secrets.DOCKER_REGISTRY }} --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
             sudo docker pull ${{secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }}
             sudo docker stop portfolio-ui || true  # Stop the existing container (if any)
             sudo docker rm portfolio-ui || true    # Remove the stopped container (if any)
             sudo docker run -d --name portfolio-ui ${{secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }}  # Run the new container 
+  #       # You may pin to the exact commit or the version.
+  # # uses: ErenKrt/ssh-push@cea145c9f5cc7a0a12e8151ac946e6d2fe565fd7
+  #     - name: SSH
+  #       uses: ErenKrt/ssh-push@1.3
+  #       with:
+  #         host:  ${{ secrets.SERVER_IP }}
+  #         # Username of SSH user
+  #         username: ${{ secrets.SERVER_USERNAME }}
+  #         # Password of user
+  #         password: ${{ secrets.SERVER_PASSWORD }}
+  #         # Execute commands after transfer source file
+  #         script: |
+           # Ensure Docker is installed and available on the server
+            # docker --version || sudo apt-get install -y docker.io
+            # echo ${{ secrets.DOCKER_PASSWORD }} | docker login https://${{ secrets.DOCKER_REGISTRY }} --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+            # sudo docker pull ${{secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }}
+            # sudo docker stop portfolio-ui || true  # Stop the existing container (if any)
+            # sudo docker rm portfolio-ui || true    # Remove the stopped container (if any)
+            # sudo docker run -d --name portfolio-ui ${{secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }}  # Run the new container 
