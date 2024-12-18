@@ -2,7 +2,7 @@
   "name": "portfolio",
   "private": false,
   "version": "0.0.0",
-  "homepage": "https://nlarson2.github.io/portfolio-ui/",
+  "homepage": "https://nlarson-portfolio.myvnc.com",
   "scripts": {
     "dev": "vite --host --mode development",
     "build": "tsc && vite build",

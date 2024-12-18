@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => {
   } else {
     return {
       ...sharedConfig,
-      base: '/portfolio-ui',
+      base: '/',
     };
   }
 
