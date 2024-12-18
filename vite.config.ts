@@ -9,7 +9,8 @@ export default defineConfig(({ mode }) => {
   const sharedConfig = {
     plugins: [react()],
     define: {
-      'process.env': process.env,
+      // 'process.env': process.env,
+      'process.env': {},
     },
     css: {
       postcss: {

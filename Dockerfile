@@ -18,7 +18,6 @@ FROM node AS production
 
 COPY --from=production-build /app/build /app/build
 RUN npm install -g serve
-
 WORKDIR /app
 EXPOSE 3000
 

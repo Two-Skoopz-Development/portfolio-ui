@@ -36,7 +36,7 @@ jobs:
       #     registry:  ${{ secrets.DOCKER_REGISTRY }}  # Docker registry
       #     username: ${{ secrets.DOCKER_USERNAME }}  # Docker username
       #     password: ${{ secrets.DOCKER_PASSWORD }}  # Docker password or token
-      
+       
       # Build and tag Docker image with remote registry
       - name: Build and tag Docker image
         run: |
