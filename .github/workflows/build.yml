@@ -40,9 +40,9 @@ jobs:
       # Build and tag Docker image with remote registry
       - name: Build and tag Docker image
         run: |
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login https://${{ secrets.DOCKER_REGISTRY }} --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker build --no-cache --target production -t ${{secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }} .
-          docker push  ${{secrets.DOCKER_REGISTRY}}/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }}
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login https://$DOCKER_REGISTRY --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker build --no-cache --target production -t $DOCKER_REGISTRY/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }} .
+          docker push  $DOCKER_REGISTRY/${{ secrets.DOCKER_USERNAME }}/portfolio-ui:${{ github.sha }}
 
       # Push the Docker image to the remote private registry
       # - name: Push Docker image to registry
