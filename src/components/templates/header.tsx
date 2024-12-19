@@ -26,11 +26,9 @@ const WebNav: React.FC = () => {
         );
       })}
       <SignedIn>
-        <SignOutButton>
-          <button className="text-platinum hover:text-gray-200">
-            Sign Out
-          </button>
-        </SignOutButton>
+        <div className="text-platinum hover:text-gray-200">
+          <SignOutButton>Sign Out</SignOutButton>
+        </div>
       </SignedIn>
     </>
   );
