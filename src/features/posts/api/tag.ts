@@ -8,7 +8,7 @@ export default class TagAPI {
     tag: Tag
   ): Promise<Tag | undefined> => {
     try {
-      const resp = await fetch(`${url}/new-tag`, {
+      const resp = await fetch(`${url}/new-tag/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -37,7 +37,7 @@ export default class TagAPI {
   };
 
   public static GetByID = async (id: number) => {
-    const response = await fetch(`${url}/${id}`, {
+    const response = await fetch(`${url}/${id}/`, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -53,7 +53,7 @@ export default class TagAPI {
     tag: Tag
   ): Promise<Tag | undefined> => {
     try {
-      const resp = await fetch(`${url}/update`, {
+      const resp = await fetch(`${url}/update/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -73,7 +73,7 @@ export default class TagAPI {
     tag: Tag
   ): Promise<Tag | undefined> => {
     try {
-      const resp = await fetch(`${url}/delete`, {
+      const resp = await fetch(`${url}/delete/`, {
         method: 'POST',
         mode: 'cors',
         headers: {

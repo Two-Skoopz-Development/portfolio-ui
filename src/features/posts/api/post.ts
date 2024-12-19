@@ -8,7 +8,7 @@ export default class PostAPI {
     post: Post
   ): Promise<Post | undefined> => {
     try {
-      const resp = await fetch(`${url}/new-post`, {
+      const resp = await fetch(`${url}/new-post/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -37,7 +37,7 @@ export default class PostAPI {
   };
 
   public static GetByID = async (uuid: string) => {
-    const response = await fetch(`${url}/${uuid}`, {
+    const response = await fetch(`${url}/${uuid}/`, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -53,7 +53,7 @@ export default class PostAPI {
     post: Post
   ): Promise<Post | undefined> => {
     try {
-      const resp = await fetch(`${url}/update`, {
+      const resp = await fetch(`${url}/update/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -73,7 +73,7 @@ export default class PostAPI {
     post: Post
   ): Promise<Post | undefined> => {
     try {
-      const resp = await fetch(`${url}/update`, {
+      const resp = await fetch(`${url}/update/`, {
         method: 'POST',
         mode: 'cors',
         headers: {
