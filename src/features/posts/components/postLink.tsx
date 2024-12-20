@@ -16,7 +16,7 @@ export const PostLink: React.FC<PostLinkProps> = ({ post }: PostLinkProps) => {
         <div className="box bg-white shadow-md rounded-lg overflow-hidden">
           <div className="thumbnail">
             <img
-              src="https://via.placeholder.com/150"
+              src="https://placehold.co/600x400"
               className="w-full h48 object-cover"
             />
           </div>
